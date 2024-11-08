@@ -7,6 +7,9 @@ const del = require('del');
 function getDatabaseType(url = process.env.DATABASE_URL) {
   const type = process.env.DATABASE_TYPE || (url && url.split(':')[0]);
 
+  console.log(`Database type: ${type}`);
+  
+
   if (type === 'postgres') {
     return 'postgresql';
   }
@@ -15,6 +18,9 @@ function getDatabaseType(url = process.env.DATABASE_URL) {
 }
 
 const databaseType = getDatabaseType();
+
+console.log(`Selected database type: ${databaseType}`);
+
 
 if (!databaseType || !['mysql', 'postgresql'].includes(databaseType)) {
   throw new Error('Missing or invalid database');
