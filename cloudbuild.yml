@@ -8,6 +8,9 @@ steps:
            '-t', 'gcr.io/tapeox/umami',
            '.']
     secretEnv: ['_DATABASE_URL', '_DATABASE_TYPE']
+    env:
+      - 'DATABASE_URL=${_DATABASE_URL}'
+      - 'DATABASE_TYPE=${_DATABASE_TYPE}'
 
 availableSecrets:
   secretManager:
