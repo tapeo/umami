@@ -5,5 +5,3 @@ steps:
            '--build-arg', 'DATABASE_TYPE=$_DATABASE_TYPE',
            '-t', 'gcr.io/tapeox/umami',
            '.']
-
-           
