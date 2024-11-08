@@ -1,8 +1,10 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', 
+    args: ['build',
            '--build-arg', 'DATABASE_URL=${_DATABASE_URL}',
            '--build-arg', 'DATABASE_TYPE=${_DATABASE_TYPE}',
+           '--set-env-vars', 'DATABASE_URL=${_DATABASE_URL}',
+           '--set-env-vars', 'DATABASE_TYPE=${_DATABASE_TYPE}',
            '-t', 'gcr.io/tapeox/umami',
            '.']
     secretEnv: ['_DATABASE_URL', '_DATABASE_TYPE']
