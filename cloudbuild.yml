@@ -1,8 +1,15 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', 
-           '--build-arg', 'DATABASE_URL=$_DATABASE_URL',
-           '--build-arg', 'DATABASE_TYPE=$_DATABASE_TYPE',
+           '--build-arg', 'DATABASE_URL=${_DATABASE_URL}',
+           '--build-arg', 'DATABASE_TYPE=${_DATABASE_TYPE}',
            '-t', 'gcr.io/tapeox/umami',
            '.']
-           
+    secretEnv: ['_DATABASE_URL', '_DATABASE_TYPE']
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/824089784983/secrets/umami-postgresql-url/versions/latest
+      env: '_DATABASE_URL'
+    - versionName: projects/824089784983/secrets/umami-database-type/versions/latest
+      env: '_DATABASE_TYPE'
