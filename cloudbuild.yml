@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', 
-           '--build-arg', 'DATABASE_URL=${_DATABASE_URL}',
+           '--build-arg', 'DATABASE_URL=${DATABASE_URL}',
            '-t', 'gcr.io/tapeox/umami',
            '.']
     secretEnv: ['DATABASE_URL']
